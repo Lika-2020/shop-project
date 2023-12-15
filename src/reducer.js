@@ -23,11 +23,11 @@ export function reducer(state, { type, payload }) {
                     }
                 })
 
-            }
+            };
 
         case 'DECREMENT_QUANTITY':
             return {
-                state,
+                ...state,
                 order: state.order.map(el => {
                     if (el.id === payload.id) {
                         const newQuantity = el.quantity - 1;
@@ -67,7 +67,7 @@ export function reducer(state, { type, payload }) {
                         }
                     })
 
-                }
+                };
 
                 return {
                     ...state,
@@ -81,22 +81,22 @@ export function reducer(state, { type, payload }) {
             return {
                 ...state,
                 isBasketShow: !state.isBasketShow,
-            }
+            };
 
 
         case 'REMOVE_FROM_BASKET':
             return {
                 ...state,
-                order: state.order.filter(el => el.id !== payload.id),
-            }
+                order: state.order.filter((el) => el.id !== payload.id),
+            };
         case 'CLOSE_ALERT':
             return {
                 ...state,
-                alertName: ''
-            }
+                alertName: '',
+            };
 
 
         default:
             return state;
-    }
+    };
 }
